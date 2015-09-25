@@ -2,20 +2,15 @@
 
 GetLedStateCommand::GetLedStateCommand()
 {
-	name = "get-led-state";
-}
-
-GetLedStateCommand::~GetLedStateCommand()
-{
-
+    name_ = "get-led-state";
 }
 
 pair < string, bool > GetLedStateCommand::applyCommand(Led* led, string argument)
 {
-	string result = "off";
-	if (led->getState()) {
-		result = "on";
-	}
+    string result = "off";
+    if (led->getState()) {
+        result = "on";
+    }
 
-	return make_pair (result, true);
+    return make_pair (result, true);
 }

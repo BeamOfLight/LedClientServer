@@ -6,13 +6,10 @@
 
 using namespace std;
 
-class GetLedColorCommand : public AbstractCommand
+struct GetLedColorCommand : public AbstractCommand
 {
-  public:
-	GetLedColorCommand();
-	~GetLedColorCommand();
-
-	pair < string, bool > applyCommand(Led* led, string argument);
+    GetLedColorCommand();
+    pair < string, bool > applyCommand(Led* led, string argument);
 };
 
 #endif

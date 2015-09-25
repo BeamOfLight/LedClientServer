@@ -15,14 +15,14 @@ using namespace std;
 class CommandManager
 {
 public:
-	CommandManager(Led* led);
+    CommandManager(Led* led);
     bool registerCommand(AbstractCommand* cmd);
-	size_t getSize();
-	string getResponse(string request);
-	Led* getLed();
-	
+    size_t getSize();
+    string getResponse(string request);
+    Led* getLed();
+
 private:
-	map < string, AbstractCommand* > registered_commands_;
-	Led* led_;
+    map < string, AbstractCommand* > registered_commands_;
+    Led* led_;
 };
 #endif

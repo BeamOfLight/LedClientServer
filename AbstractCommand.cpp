@@ -2,17 +2,16 @@
 
 AbstractCommand::AbstractCommand()
 {
-	
 }
 
 AbstractCommand::~AbstractCommand()
 {
-	
+
 }
-	
-string AbstractCommand::getName()
+
+string AbstractCommand::name()
 {
-	return name;
+    return name_;
 }
 
 pair < string, bool > AbstractCommand::applyCommand(Led* led, string argument)
@@ -22,10 +21,5 @@ pair < string, bool > AbstractCommand::applyCommand(Led* led, string argument)
 
 set <string> AbstractCommand::getArgumentList()
 {
-	return argument_list;
-}
-
-bool AbstractCommand::hasArguments()
-{
-	return (bool) argument_list.size();
+    return argument_list_;
 }

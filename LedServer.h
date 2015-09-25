@@ -22,12 +22,12 @@ using namespace std;
 class LedServer
 {
 public:
-	LedServer(boost::asio::io_service& io_service, short port, CommandManager* manager);
-	void handleAccept(Session* new_session, const boost::system::error_code& error);
-	
+    LedServer(boost::asio::io_service& io_service, short port, CommandManager* manager);
+    void handleAccept(Session* new_session, const boost::system::error_code& error);
+
 private:
-	CommandManager* manager_;
-	boost::asio::io_service& io_service_;
-	tcp::acceptor acceptor_;
+    CommandManager* manager_;
+    boost::asio::io_service& io_service_;
+    tcp::acceptor acceptor_;
 };
 #endif

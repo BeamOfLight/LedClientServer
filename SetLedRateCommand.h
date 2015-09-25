@@ -9,13 +9,10 @@
 
 using namespace std;
 
-class SetLedRateCommand : public AbstractCommand
+struct SetLedRateCommand : public AbstractCommand
 {
-  public:
-	SetLedRateCommand();
-	~SetLedRateCommand();
-	
-	pair < string, bool > applyCommand(Led* led, string argument);
+    SetLedRateCommand();
+    pair < string, bool > applyCommand(Led* led, string argument);
 };
 
 #endif
