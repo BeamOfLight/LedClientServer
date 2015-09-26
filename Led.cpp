@@ -18,16 +18,16 @@ string Led::getStateText()
     if (getState())    {
         state_text = "on";
     }
-    
+
     return state_text;
 }
 
-void Led::setState(bool state) 
+void Led::setState(bool state)
 {
     this->state = state;
 }
 
-void Led::setStateFromText(string state_str) 
+void Led::setState(string state_str)
 {
     if (state_str == "on") {
         state = true;
@@ -51,7 +51,7 @@ string Led::getColorText()
     } else if (this->color == COLOR_BLUE) {
         result = "blue";
     }
-    
+
     return result;
 }
 
@@ -60,7 +60,7 @@ void Led::setColor(LedColor color)
     this->color = color;
 }
 
-void Led::setColorFromText(string color_str)
+void Led::setColor(string color_str)
 {
     if (color_str == "red") {
         this->color = COLOR_RED;
@@ -81,7 +81,7 @@ void Led::setRate(unsigned char rate)
     this->rate = rate;
 }
 
-void Led::setRateFromText(string rate_text)
+void Led::setRate(string rate_text)
 {
     rate = atoi(rate_text.c_str());
 }

@@ -89,9 +89,9 @@ int main(int argc, char* argv[])
             "Close connection"
         };
 
-        led->setStateFromText(sendRequest(socket, "get-led-state\n"));
-        led->setRateFromText(sendRequest(socket, "get-led-rate\n"));
-        led->setColorFromText(sendRequest(socket, "get-led-color\n"));
+        led->setState(sendRequest(socket, "get-led-state\n"));
+        led->setRate(sendRequest(socket, "get-led-rate\n"));
+        led->setColor(sendRequest(socket, "get-led-color\n"));
 
         int rate;
         int selected_item = -1;
@@ -142,9 +142,9 @@ int main(int argc, char* argv[])
                     led->setRate(rate);
                     break;
                 case 6:
-                    led->setStateFromText(sendRequest(socket, "get-led-state\n"));
-                    led->setRateFromText(sendRequest(socket, "get-led-rate\n"));
-                    led->setColorFromText(sendRequest(socket, "get-led-color\n"));
+                    led->setState(sendRequest(socket, "get-led-state\n"));
+                    led->setRate(sendRequest(socket, "get-led-rate\n"));
+                    led->setColor(sendRequest(socket, "get-led-color\n"));
                     break;
                 case 7:
                     return 0;

@@ -20,14 +20,14 @@ class Led
     bool getState();
     string getStateText();
     void setState(bool state);
-    void setStateFromText(string state_str);
+    void setState(string state_str);
     LedColor getColor();
     string getColorText();
     void setColor(LedColor color);
-    void setColorFromText(string color_str);
+    void setColor(string color_str);
     unsigned char getRate();
     void setRate(unsigned char rate);
-    void setRateFromText(string rate_text);
+    void setRate(string rate_text);
     string getInfo();
 };
 
