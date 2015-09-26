@@ -6,14 +6,14 @@ SetLedColorCommand::SetLedColorCommand()
     argument_list_ = {COLOR_RED_TEXT, COLOR_GREEN_TEXT, COLOR_BLUE_TEXT};
 }
 
-pair < string, bool > SetLedColorCommand::applyCommand(Led* led, string argument)
+CommandResult* SetLedColorCommand::applyCommand(Led* led, std::string argument)
 {
-    map <string, LedColor> reverse_color_map;
+    map <std::string, LedColor> reverse_color_map;
     reverse_color_map[COLOR_RED_TEXT] = COLOR_RED;
     reverse_color_map[COLOR_GREEN_TEXT] = COLOR_GREEN;
     reverse_color_map[COLOR_BLUE_TEXT] = COLOR_BLUE;
 
-    set <string> arg_list = getArgumentList();
+    set <std::string> arg_list = getArgumentList();
     auto it = arg_list.find(argument);
     bool status = false;
     if (it != arg_list.end()) {
@@ -21,5 +21,5 @@ pair < string, bool > SetLedColorCommand::applyCommand(Led* led, string argument
         led->setColor(reverse_color_map[argument]);
     }
 
-    return make_pair("", status);
+    return new CommandResult("", status);
 }

@@ -5,12 +5,12 @@ GetLedStateCommand::GetLedStateCommand()
     name_ = "get-led-state";
 }
 
-pair < string, bool > GetLedStateCommand::applyCommand(Led* led, string argument)
+CommandResult* GetLedStateCommand::applyCommand(Led* led, std::string argument)
 {
     string result = "off";
     if (led->getState()) {
         result = "on";
     }
 
-    return make_pair (result, true);
+    return new CommandResult(result, true);
 }

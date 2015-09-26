@@ -5,7 +5,7 @@ SetLedRateCommand::SetLedRateCommand()
     name_ = "set-led-rate";
 }
 
-pair < string, bool > SetLedRateCommand::applyCommand(Led* led, string argument)
+CommandResult* SetLedRateCommand::applyCommand(Led* led, std::string argument)
 {
     unsigned char rate = atoi(argument.c_str());
     bool status = false;
@@ -14,5 +14,5 @@ pair < string, bool > SetLedRateCommand::applyCommand(Led* led, string argument)
         led->setRate(rate);
     }
 
-    return make_pair("", status);
+    return new CommandResult("", status);
 }

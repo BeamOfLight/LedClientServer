@@ -7,12 +7,10 @@
 
 #define RATE_MAX 5
 
-using namespace std;
-
 struct SetLedRateCommand : public AbstractCommand
 {
     SetLedRateCommand();
-    pair < string, bool > applyCommand(Led* led, string argument);
+    CommandResult* applyCommand(Led* led, std::string argument);
 };
 
 #endif

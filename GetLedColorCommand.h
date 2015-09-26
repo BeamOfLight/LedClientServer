@@ -4,12 +4,10 @@
 #include "AbstractCommand.h"
 #include <map>
 
-using namespace std;
-
 struct GetLedColorCommand : public AbstractCommand
 {
     GetLedColorCommand();
-    pair < string, bool > applyCommand(Led* led, string argument);
+    CommandResult* applyCommand(Led* led, std::string argument);
 };
 
 #endif

@@ -7,12 +7,10 @@
 #include <iostream>
 #include <algorithm>
 
-using namespace std;
-
 struct GetLedRateCommand : public AbstractCommand
 {
     GetLedRateCommand();
-    pair < string, bool > applyCommand(Led* led, string argument);
+    CommandResult* applyCommand(Led* led, std::string argument);
 };
 
 #endif

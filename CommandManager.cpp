@@ -29,10 +29,10 @@ Led* CommandManager::getLed()
 string CommandManager::getResponse(string request)
 {
     bool status = false;
-    string result_msg = "";
+    std::string result_msg = "";
     if (request.find("\n") == request.size() - 1) {
         int pos = request.find(" ");
-        string command_name, argument = "";
+        std::string command_name, argument = "";
         if (pos == string::npos) {
             command_name = request.substr(0, request.size() - 1);
         } else {
@@ -42,13 +42,13 @@ string CommandManager::getResponse(string request)
 
         auto it = registered_commands_.find(command_name);
         if (it != registered_commands_.end()) {
-            pair < string, bool> result = registered_commands_[command_name]->applyCommand(led_, argument);
-            result_msg = result.first;
-            status = result.second;
+            CommandResult* result = registered_commands_[command_name]->applyCommand(led_, argument);
+            result_msg = result->text;
+            status = result->status;
         }
     }
 
-    string status_msg;
+    std::string status_msg;
     if (status) {
         status_msg = STATUS_MESSAGE_OK;
         if (result_msg.size()) {

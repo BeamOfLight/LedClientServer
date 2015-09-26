@@ -5,12 +5,12 @@ GetLedRateCommand::GetLedRateCommand()
     name_ = "get-led-rate";
 }
 
-pair < string, bool > GetLedRateCommand::applyCommand(Led* led, string argument)
+CommandResult* GetLedRateCommand::applyCommand(Led* led, std::string argument)
 {
     int param = led->getRate();
-    stringstream ss;
+    std::stringstream ss;
     ss << param;
-    string result = ss.str();
+    std::string result = ss.str();
 
-    return make_pair(result, true);
+    return new CommandResult(result, true);
 }

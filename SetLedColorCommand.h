@@ -9,12 +9,10 @@
 #define COLOR_GREEN_TEXT "green"
 #define COLOR_BLUE_TEXT "blue"
 
-using namespace std;
-
 struct SetLedColorCommand : public AbstractCommand
 {
     SetLedColorCommand();
-    pair < string, bool > applyCommand(Led* led, string argument);
+    CommandResult* applyCommand(Led* led, std::string argument);
 };
 
 #endif

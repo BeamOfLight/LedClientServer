@@ -4,21 +4,20 @@
 #include <set>
 #include <string>
 #include "Led.h"
-
-using namespace std;
+#include "CommandResult.h"
 
 class AbstractCommand
 {
 protected:
-    string name_;
-    set <string> argument_list_;
+    std::string name_;
+    set <std::string> argument_list_;
 public:
     AbstractCommand();
     virtual ~AbstractCommand();
-    virtual pair < string, bool > applyCommand(Led* led, string argument);
+    virtual CommandResult* applyCommand(Led* led, std::string argument);
 
-    string name();
-    set <string> getArgumentList();
+    std::string name();
+    set <std::string> getArgumentList();
 };
 
 #endif

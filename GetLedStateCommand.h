@@ -3,12 +3,10 @@
 
 #include "AbstractCommand.h"
 
-using namespace std;
-
 struct GetLedStateCommand : public AbstractCommand
 {
     GetLedStateCommand();
-    pair < string, bool > applyCommand(Led* led, string argument);
+    CommandResult* applyCommand(Led* led, std::string argument);
 };
 
 #endif

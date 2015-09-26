@@ -9,17 +9,17 @@ AbstractCommand::~AbstractCommand()
 
 }
 
-string AbstractCommand::name()
+std::string AbstractCommand::name()
 {
     return name_;
 }
 
-pair < string, bool > AbstractCommand::applyCommand(Led* led, string argument)
+CommandResult* AbstractCommand::applyCommand(Led* led, std::string argument)
 {
 
 }
 
-set <string> AbstractCommand::getArgumentList()
+set <std::string> AbstractCommand::getArgumentList()
 {
     return argument_list_;
 }
