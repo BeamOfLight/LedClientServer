@@ -19,7 +19,7 @@ CommandResult* AbstractCommand::applyCommand(Led* led, std::string argument)
 
 }
 
-set <std::string> AbstractCommand::getArgumentList()
+std::set <std::string> AbstractCommand::getArgumentList()
 {
     return argument_list_;
 }

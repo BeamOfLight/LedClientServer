@@ -13,7 +13,7 @@ tcp::socket& Session::socket()
 
 void Session::start()
 {
-    cout << "Session start" << endl;
+    std::cout << "Session start" << std::endl;
     socket_.async_read_some(
         boost::asio::buffer(data_, max_length),
         boost::bind(
@@ -27,11 +27,11 @@ void Session::start()
 
 void Session::handleRead(const boost::system::error_code& error, size_t bytes_transferred)
 {
-    string request = string(data_);
+    std::string request = std::string(data_);
     request = request.substr(0, request.find("\n") + 1);
-    string response = manager_->getResponse(request);
+    std::string response = manager_->getResponse(request);
 
-    cout << manager_->getLed()->getInfo() << endl;
+    std::cout << manager_->getLed()->getInfo() << std::endl;
 
     if (!error) {
         boost::asio::async_write(

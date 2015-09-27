@@ -20,7 +20,7 @@ public:
     Led* getLed();
 
 private:
-    map < std::string, AbstractCommand* > registered_commands_;
+    std::map < std::string, AbstractCommand* > registered_commands_;
     Led* led_;
 };
 #endif

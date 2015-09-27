@@ -12,9 +12,9 @@ bool Led::getState()
     return state;
 }
 
-string Led::getStateText()
+std::string Led::getStateText()
 {
-    string state_text = "off";
+    std::string state_text = "off";
     if (getState())    {
         state_text = "on";
     }
@@ -27,7 +27,7 @@ void Led::setState(bool state)
     this->state = state;
 }
 
-void Led::setState(string state_str)
+void Led::setState(std::string state_str)
 {
     if (state_str == "on") {
         state = true;
@@ -41,9 +41,9 @@ LedColor Led::getColor()
     return color;
 }
 
-string Led::getColorText()
+std::string Led::getColorText()
 {
-    string result;
+    std::string result;
     if (this->color == COLOR_RED) {
         result = "red";
     } else if (this->color == COLOR_GREEN) {
@@ -60,7 +60,7 @@ void Led::setColor(LedColor color)
     this->color = color;
 }
 
-void Led::setColor(string color_str)
+void Led::setColor(std::string color_str)
 {
     if (color_str == "red") {
         this->color = COLOR_RED;
@@ -81,14 +81,14 @@ void Led::setRate(unsigned char rate)
     this->rate = rate;
 }
 
-void Led::setRate(string rate_text)
+void Led::setRate(std::string rate_text)
 {
     rate = atoi(rate_text.c_str());
 }
 
-string Led::getInfo()
+std::string Led::getInfo()
 {
-    ostringstream result;
+    std::ostringstream result;
     result << "State: " << getStateText() << "\tColor: " << getColorText() << "\tRate: " << (int) getRate() << " Hz";
 
     return result.str();

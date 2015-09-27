@@ -11,22 +11,21 @@
 #include "CommandManager.h"
 
 using boost::asio::ip::tcp;
-using namespace std;
 
-void showMenu(const vector < string > &menu)
+void showMenu(const std::vector < std::string > &menu)
 {
     int i = 0;
     for (auto &item: menu) {
-        cout << (i++) << ". " << item << endl;
+        std::cout << (i++) << ". " << item << std::endl;
     }
 }
 
-string sendRequest(tcp::socket &socket, const string &request)
+std::string sendRequest(tcp::socket &socket, const std::string &request)
 {
     boost::array<char, 128> buf_write;
     boost::array<char, 128> buf_read;
     boost::system::error_code error;
-    copy(request.begin(), request.end(), buf_write.begin());
+    std::copy(request.begin(), request.end(), buf_write.begin());
     socket.write_some(boost::asio::buffer(buf_write, request.size()), error);
 
     if (error == boost::asio::error::eof) {
@@ -35,9 +34,9 @@ string sendRequest(tcp::socket &socket, const string &request)
         throw boost::system::system_error(error); // Some other error
     }
 
-    string response;
+    std::string response;
     size_t len = socket.read_some(boost::asio::buffer(buf_read), error);
-    copy(buf_read.begin(), buf_read.begin() + len, back_inserter(response));
+    std::copy(buf_read.begin(), buf_read.begin() + len, back_inserter(response));
 
     if (error == boost::asio::error::eof) {
         throw "Connection closed cleanly by peer";
@@ -45,13 +44,13 @@ string sendRequest(tcp::socket &socket, const string &request)
         throw boost::system::system_error(error); // Some other error.
     }
 
-    string result;
+    std::string result;
     int pos = response.find(STATUS_MESSAGE_OK);
-    if (pos != string::npos && response.size() > 3)    {
+    if (pos != std::string::npos && response.size() > 3)    {
         result = response.substr(3, response.size() - 4);
     } else {
         pos = response.find(STATUS_MESSAGE_FAILED);
-        if (pos != string::npos) {
+        if (pos != std::string::npos) {
             throw response.c_str();
         }
     }
@@ -64,7 +63,7 @@ int main(int argc, char* argv[])
     setlocale(LC_ALL, "Russian");
     try {
         if (argc != 3) {
-            cerr << "Usage: client <host> <port>" << endl;
+            std::cerr << "Usage: client <host> <port>" << std::endl;
             return 1;
         }
 
@@ -78,7 +77,7 @@ int main(int argc, char* argv[])
         boost::asio::connect(socket, endpoint_iterator);
         Led* led = new Led();
 
-        vector < string > menu = {
+        std::vector < std::string > menu = {
             "Set color: red",
             "Set color: green",
             "Set color: blue",
@@ -95,18 +94,18 @@ int main(int argc, char* argv[])
 
         int rate;
         int selected_item = -1;
-        ostringstream result;
-        string request;
+        std::ostringstream result;
+        std::string request;
         boost::array<char, 128> buf_write;
         boost::array<char, 128> buf_read;
         boost::system::error_code error;
         for (;;) {
-            cout << led->getInfo() << endl;
+            std::cout << led->getInfo() << std::endl;
             showMenu(menu);
 
-            cout << "Choise: ";
-            cin >> selected_item;
-            cout << endl;
+            std::cout << "Choise: ";
+            std::cin >> selected_item;
+            std::cout << std::endl;
 
             switch (selected_item) {
                 case 0:
@@ -130,13 +129,13 @@ int main(int argc, char* argv[])
                     led->setState(false);
                     break;
                 case 5:
-                    cout << "Enter rate in Hz (0-5)" << endl;
+                    std::cout << "Enter rate in Hz (0-5)" << std::endl;
                     rate = -1;
                     while (rate < 0 || rate > 5) {
-                        cin >> rate;
+                        std::cin >> rate;
                     }
                     result.str("");
-                    result << "set-led-rate " << rate << "\n";
+                    result << "set-led-rate " << rate << std::endl;
                     request = result.str();
                     sendRequest(socket, request);
                     led->setRate(rate);

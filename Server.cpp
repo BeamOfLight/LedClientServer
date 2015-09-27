@@ -10,7 +10,6 @@
 #include "SetLedRateCommand.h"
 
 using boost::asio::ip::tcp;
-using namespace std;
 
 int main(int argc, char* argv[])
 {
@@ -24,7 +23,7 @@ int main(int argc, char* argv[])
         boost::asio::io_service io_service;
 
         Led* led = new Led();
-        cout << led->getInfo() << endl;
+        std::cout << led->getInfo() << std::endl;
         CommandManager* manager = new CommandManager(led);
         manager->registerCommand(new GetLedStateCommand());
         manager->registerCommand(new SetLedStateCommand());
@@ -32,12 +31,12 @@ int main(int argc, char* argv[])
         manager->registerCommand(new SetLedColorCommand());
         manager->registerCommand(new GetLedRateCommand());
         manager->registerCommand(new SetLedRateCommand());
-        cout << "Registered commands count: " << manager->getSize() << endl;
+        std::cout << "Registered commands count: " << manager->getSize() << std::endl;
         LedServer led_server = LedServer(io_service, atoi(argv[1]), manager);
 
         io_service.run();
     } catch (std::exception& e) {
-        std::cerr << "Exception: " << e.what() << "\n";
+        std::cerr << "Exception: " << e.what() << std::endl;
     }
 
     return 0;

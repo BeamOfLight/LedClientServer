@@ -17,8 +17,6 @@
 #include "Session.h"
 #include "CommandManager.h"
 
-using namespace std;
-
 class LedServer
 {
 public:

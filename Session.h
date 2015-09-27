@@ -19,7 +19,6 @@
 #include "SetLedRateCommand.h"
 
 using boost::asio::ip::tcp;
-using namespace std;
 
 class Session
 {

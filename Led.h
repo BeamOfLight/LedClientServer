@@ -5,8 +5,6 @@
 #include <sstream>
 #include <stdlib.h>     /* atoi */
 
-using namespace std;
-
 enum LedColor {COLOR_RED, COLOR_GREEN, COLOR_BLUE};
 
 class Led
@@ -18,17 +16,17 @@ class Led
   public:
     Led();
     bool getState();
-    string getStateText();
+    std::string getStateText();
     void setState(bool state);
-    void setState(string state_str);
+    void setState(std::string state_str);
     LedColor getColor();
-    string getColorText();
+    std::string getColorText();
     void setColor(LedColor color);
-    void setColor(string color_str);
+    void setColor(std::string color_str);
     unsigned char getRate();
     void setRate(unsigned char rate);
-    void setRate(string rate_text);
-    string getInfo();
+    void setRate(std::string rate_text);
+    std::string getInfo();
 };
 
 #endif

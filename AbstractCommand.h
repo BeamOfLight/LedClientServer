@@ -10,14 +10,14 @@ class AbstractCommand
 {
 protected:
     std::string name_;
-    set <std::string> argument_list_;
+    std::set <std::string> argument_list_;
 public:
     AbstractCommand();
     virtual ~AbstractCommand();
     virtual CommandResult* applyCommand(Led* led, std::string argument);
 
     std::string name();
-    set <std::string> getArgumentList();
+    std::set <std::string> getArgumentList();
 };
 
 #endif

@@ -7,7 +7,7 @@ GetLedStateCommand::GetLedStateCommand()
 
 CommandResult* GetLedStateCommand::applyCommand(Led* led, std::string argument)
 {
-    string result = "off";
+    std::string result = "off";
     if (led->getState()) {
         result = "on";
     }

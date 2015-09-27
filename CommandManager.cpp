@@ -26,14 +26,14 @@ Led* CommandManager::getLed()
     return led_;
 }
 
-string CommandManager::getResponse(string request)
+std::string CommandManager::getResponse(std::string request)
 {
     bool status = false;
     std::string result_msg = "";
     if (request.find("\n") == request.size() - 1) {
         int pos = request.find(" ");
         std::string command_name, argument = "";
-        if (pos == string::npos) {
+        if (pos == std::string::npos) {
             command_name = request.substr(0, request.size() - 1);
         } else {
             command_name = request.substr(0, pos);

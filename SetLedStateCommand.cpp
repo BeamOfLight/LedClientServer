@@ -8,11 +8,11 @@ SetLedStateCommand::SetLedStateCommand()
 
 CommandResult* SetLedStateCommand::applyCommand(Led* led, std::string argument)
 {
-    map <std::string, unsigned char> reverse_state_map;
+    std::map <std::string, unsigned char> reverse_state_map;
     reverse_state_map[LED_STATE_ON] = true;
     reverse_state_map[LED_STATE_OFF] = false;
 
-    set < std::string> arg_list = getArgumentList();
+    std::set < std::string> arg_list = getArgumentList();
     auto it = arg_list.find(argument);
     bool status = false;
     if (it != arg_list.end()) {
